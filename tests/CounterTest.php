@@ -1,67 +1,54 @@
 <?php
-    require_once __DIR__.'/../src/Counter.php';
+    require_once __DIR__."/../src/Counter.php";
 
-    class Test_RepeatCounter extends PHPUnit_Framework_TestCase
+    class word_counterTest extends PHPUnit_Framework_TestCase
     {
-        function test_single_word()
+        function testcount_word_alone()
         {
-            // Arrange
-            $test_Counter = new Counter();
-            $word = "potato";
-            $sentence = "potato";
-            $partial_matches = false;
-            // Act
-            $result = $test_RepeatCounter->CountRepeats($word, $sentence, $partial_matches);
-            // Assert
+            //Arrange
+            $test_counter = new Counter;
+            $test_target = "bruh";
+            $test_sentence = "bruh";
+            //Act
+            $result = $test_counter->count_word($test_target, $test_sentence);
+            //Assert
             $this->assertEquals(1, $result);
         }
-        function test_partial_match_false()
+
+        function testcount_word_multi()
         {
-            // Arrange
-            $test_RepeatCounter = new RepeatCounter();
-            $word = "test";
-            $sentence = "testing";
-            $partial_matches = false;
-            // Act
-            $result = $test_RepeatCounter->CountRepeats($word, $sentence, $partial_matches);
-            // Assert
+            //Arrange
+            $test_counter = new Counter;
+            $test_target = "brutha";
+            $test_sentence = "brutha brutha";
+            //Act
+            $result = $test_counter->count_word($test_target, $test_sentence);
+            //Assert
+            $this->assertEquals(2, $result);
+        }
+
+        function testcount_word_non_target()
+        {
+            //Arrange
+            $test_counter = new Counter;
+            $test_target = "bro";
+            $test_sentence = "bro brutha bro";
+            //Act
+            $result = $test_counter->count_word($test_target, $test_sentence);
+            //Assert
+            $this->assertEquals(2, $result);
+        }
+
+        function testcount_word_no_match()
+        {
+            //Arrange
+            $test_counter = new Counter;
+            $test_target = "cus";
+            $test_sentence = "You can only call me bruh, bro.";
+            //Act
+            $result = $test_counter->count_word($test_target, $test_sentence);
+            //Assert
             $this->assertEquals(0, $result);
         }
-        function test_2_matches()
-        {
-            // Arrange
-            $test_RepeatCounter = new RepeatCounter();
-            $word = "test";
-            $sentence = "test for test in tests";
-            $partial_matches = false;
-            // Act
-            $result = $test_RepeatCounter->CountRepeats($word, $sentence, $partial_matches);
-            // Assert
-            $this->assertEquals(2, $result);
-        }
-        function test_patial_match_true()
-        {
-            // Arrange
-            $test_RepeatCounter = new RepeatCounter();
-            $word = "test";
-            $sentence = "testing for tests";
-            $partial_matches = true;
-            // Act
-            $result = $test_RepeatCounter->CountRepeats($word, $sentence, $partial_matches);
-            // Assert
-            $this->assertEquals(2, $result);
-        }
-        function test_mixed_case()
-        {
-            // Arrange
-            $test_RepeatCounter = new RepeatCounter();
-            $word = "test";
-            $sentence = "teST";
-            $partial_matches = false;
-            // Act
-            $result = $test_RepeatCounter->CountRepeats($word, $sentence, $partial_matches);
-            // Assert
-            $this->assertEquals(1, $result);
-        }
     }
- ?>
+?>
