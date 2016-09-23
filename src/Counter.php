@@ -8,7 +8,7 @@
         return $this->count;
       }
 
-        function count_word($target, $sentence)
+        function count_word($word_input, $sentence)
         {
             $sentence_lower = strtolower($sentence);
 
@@ -16,7 +16,7 @@
 
             foreach($sentence_words as $word)
             {
-                if($word === $target)
+                if($word === $word_input)
                 {
                     $this->count++;
                 }

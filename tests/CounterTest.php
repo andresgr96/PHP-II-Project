@@ -3,7 +3,7 @@
 
     class word_counterTest extends PHPUnit_Framework_TestCase
     {
-        function testcount_word_alone()
+        function testcount_single_word()
         {
             //Arrange
             $test_counter = new Counter;
@@ -15,7 +15,7 @@
             $this->assertEquals(1, $result);
         }
 
-        function testcount_word_multi()
+        function testcount_multiple_words()
         {
             //Arrange
             $test_counter = new Counter;
@@ -27,7 +27,7 @@
             $this->assertEquals(2, $result);
         }
 
-        function testcount_word_non_target()
+        function testcount_sentece_word()
         {
             //Arrange
             $test_counter = new Counter;
@@ -39,7 +39,7 @@
             $this->assertEquals(2, $result);
         }
 
-        function testcount_word_no_match()
+        function testcount_no_match()
         {
             //Arrange
             $test_counter = new Counter;

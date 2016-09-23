@@ -16,7 +16,7 @@
     $app->post('/result', function() use ($app)
     {
         $new_counter = new Counter();
-        $target_word = $_POST['target'];
+        $target_word = $_POST['word_input'];
         $sentence = $_POST['sentence'];
         $new_counter->count_word($target_word, $sentence);
 
